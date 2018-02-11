@@ -46,7 +46,6 @@ function setGameElements() {
             newGameElem.style.display = 'block';
             pickElem.style.display = 'none';
             resultsElem.style.display = 'none';
-            break;
     } 
 }
 setGameElements(gameState);
@@ -101,10 +100,10 @@ function checkRoundWinner(playerPick, computerPick) {
             winnerIs = 'computer';
         }
     
-        if (winnerIs == 'player') {
+        if (winnerIs === 'player') {
             playerResultElem.innerHTML = 'Win!';
             player.score++;
-        } else if (winnerIs == 'computer') {
+        } else if (winnerIs === 'computer') {
             computerResultElem.innerHTML = 'Win!';
             computer.score++;
         }
