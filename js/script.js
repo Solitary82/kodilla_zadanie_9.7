@@ -1,3 +1,5 @@
+"use strict";
+
 var newGameBtn = document.getElementById('js-newGameButton');
 newGameBtn.addEventListener('click', newGame);
 
@@ -6,20 +8,14 @@ var pickRock = document.getElementById('js-playerPick_rock'),
     pickScissors = document.getElementById('js-playerPick_scissors');
 
 pickRock.addEventListener('click', function() {
-    "use strict";
-    
     playerPick('rock');
 });
 
 pickPaper.addEventListener('click', function() {
-    "use strict";
-    
     playerPick('paper');
 });
 
 pickScissors.addEventListener('click', function() {
-    "use strict";
-    
     playerPick('scissors');
 });
 
@@ -37,8 +33,6 @@ var newGameElem = document.getElementById('js-newGameElement'),
     resultsElem = document.getElementById('js-resultsTableElement');
 
 function setGameElements() {
-    "use strict";
-    
     switch(gameState) {
         case 'started':
             newGameElem.style.display = "none";
@@ -61,9 +55,6 @@ var playerPointsElem = document.getElementById('js-playerPoints'),
     computerPointsElem = document.getElementById('js-computerPoints');
 
 function newGame() {
-    
-    "use strict";
-    
     player.name = prompt('Please enter your name', 'imię gracza');
     if (player.name) {
         player.score = computer.score = 0;
@@ -75,16 +66,10 @@ function newGame() {
 }
 
 function playerPick(playerPick) {
-    
-    "use strict";
-    
     console.log(playerPick);
 }
 
 function getComputerPick() {
-    
-    "use strict";
-    
     var possiblePicks = ['rock', 'paper', 'scissors'];
     return possiblePicks[Math.floor(Math.random()*3)];
 }
@@ -95,9 +80,6 @@ var playerPickElem = document.getElementById ('js-playerPick'),
     computerResultElem = document.getElementById('js-computerResult');
 
 function playerPick(playerPick) {
-    
-    "use strict";
-    
     var computerPick = getComputerPick();
     
     playerPickElem.innerHTML = playerPick;
@@ -105,9 +87,6 @@ function playerPick(playerPick) {
 }
 
 function checkRoundWinner(playerPick, computerPick) {
-    
-    "use strict";
-    
     playerResultElem.innerHTML = computerResultElem.innerHTML = '';
     
     var winnerIs = 'player';
@@ -121,10 +100,10 @@ function checkRoundWinner(playerPick, computerPick) {
             winnerIs = 'computer';
         }
     
-        if (winnerIs == 'player') {
+        if (winnerIs === 'player') {
             playerResultElem.innerHTML = 'Win!';
             player.score++;
-        } else if (winnerIs == 'computer') {
+        } else if (winnerIs === 'computer') {
             computerResultElem.innerHTML = 'Win!';
             computer.score++;
         }
@@ -133,9 +112,6 @@ function checkRoundWinner(playerPick, computerPick) {
 }
 
 function playerPick(playerPick) {
-    
-    "use strict";
-    
     var computerPick = getComputerPick();
     
     playerPickElem.innerHTML = playerPick;
@@ -145,25 +121,19 @@ function playerPick(playerPick) {
 }
 
 function gameOver () {
-    
-    "use strict";
-    
     if (computer.score === 10) {
-        alert("Computer wins!");
-        setGameElements(gameState = 'ended');
-    } else if (player.score === 10) {
-        alert("Player wins!");
-        setGameElements(gameState = 'ended');
+    alert("Computer scored " + computer.score + " points! Computer wins!");
+    setGameElements(gameState = "ended");
+    } else if 
+    (player.score === 10) {
+    alert("Player scored " + player.score + " points! Player wins!");
+    setGameElements(gameState = "ended");
     }
 }
 
-
-
 function setGamePoints() {
-    
-    "use strict";
-    
     playerPointsElem.innerHTML = player.score;
     computerPointsElem.innerHTML = computer.score;
     gameOver();
 }
+
