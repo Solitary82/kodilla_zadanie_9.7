@@ -46,6 +46,7 @@ function setGameElements() {
             newGameElem.style.display = 'block';
             pickElem.style.display = 'none';
             resultsElem.style.display = 'none';
+            break;
     } 
 }
 setGameElements(gameState);
@@ -60,8 +61,8 @@ function newGame() {
         player.score = computer.score = 0;
         gameState = 'started';
         setGameElements();
-        
         playerNameElem.innerHTML = player.name;
+        setGamePoints();
     }
 }
 
@@ -100,15 +101,16 @@ function checkRoundWinner(playerPick, computerPick) {
             winnerIs = 'computer';
         }
     
-        if (winnerIs === 'player') {
+        if (winnerIs == 'player') {
             playerResultElem.innerHTML = 'Win!';
             player.score++;
-        } else if (winnerIs === 'computer') {
+        } else if (winnerIs == 'computer') {
             computerResultElem.innerHTML = 'Win!';
             computer.score++;
         }
    
         setGamePoints();
+        gameOver();
 }
 
 function playerPick(playerPick) {
@@ -120,20 +122,23 @@ function playerPick(playerPick) {
     checkRoundWinner(playerPick, computerPick);
 }
 
-function gameOver () {
-    if (computer.score === 10) {
-    alert("Computer scored " + computer.score + " points! Computer wins!");  
-    setGameElements(gameState = "ended");
-    } else if 
-    (player.score === 10) {
-    alert("PLayer scored " + player.score + " points! Player wins!");   
-    setGameElements(gameState = "ended");
-    }
-}
-
 function setGamePoints() {
     playerPointsElem.innerHTML = player.score;
     computerPointsElem.innerHTML = computer.score;
-    gameOver();
 }
+
+function gameOver() {
+    if  (computer.score === 10) {
+        gameState = 'ended';
+        setGameElements();
+        alert('Computer scored ' + computer.score + ' points! Computer wins!');
+    
+    } else if (player.score === 10) {
+        gameState = 'ended';
+        setGameElements();
+        alert('Player scored ' + player.score + ' points! Player wins!');
+    }    
+}
+
+
 
