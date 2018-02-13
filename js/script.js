@@ -130,18 +130,20 @@ function gameOver() {
     if  (computer.score === 10) {
         gameState = 'ended';
         setTimeout(setGameElements, 100);
+        
         setTimeout(computerWin, 100);
-        function computerWin() {
-        alert('Computer scored ' + computer.score + ' points! Computer wins!');
-        }
+            function computerWin() {
+            alert('Computer scored ' + computer.score + ' points! Computer wins!');
+            }
     
     } else if (player.score === 10) {
         gameState = 'ended';
         setTimeout(setGameElements, 100);
+        
         setTimeout(playerWin, 100);
-        function playerWin() {
-        alert('Player scored ' + player.score + ' points! Player wins!');
-        }
+            function playerWin() {
+            alert('Player scored ' + player.score + ' points! Player wins!');
+            }
     }    
 }
 
